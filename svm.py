@@ -59,14 +59,7 @@ def text_process(mess):
     2. Remove all stopwords
     3. Returns a list of the cleaned text
     """
-    # Check characters to see if they are in punctuation
-    nopunc = [char for char in mess if char not in string.punctuation]
-
-    # Join the characters again to form the string.
-    nopunc = ''.join(nopunc)
-    
-    # Now just remove any stopwords
-    return [word for word in nopunc.split() if word.lower() not in stopwords.words('english')]
+   
  
 # TFIDF Vectorizer - used to convert reviews from text to features
 stopset = set(stopwords.words('english'))

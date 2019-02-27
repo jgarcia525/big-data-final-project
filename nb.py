@@ -60,21 +60,21 @@ def main():
     
     clf = naive_bayes.MultinomialNB()
     
-    for i in range (100): 
+  
 
-        # dataframes for train and test dataset
-        train_df = sentimentDataFrame("lab_train.txt")
-        X_train, y_train = vectorizer.fit_transform(train_df.reviews), train_df.sentiments
-        
-        test_df = sentimentDataFrame("lab_test.txt")
-        X_test, y_test = vectorizer.transform(test_df.reviews), test_df.sentiments
-        
-        # train using naive bayes classifier
-        
-        clf.fit(X_train, y_train)
-        
-        # test models accuracy
-        print (roc_auc_score(y_test, clf.predict_proba(X_test)[:,1]))
+    # dataframes for train and test dataset
+    train_df = sentimentDataFrame("lab_train.txt")
+    X_train, y_train = vectorizer.fit_transform(train_df.reviews), train_df.sentiments
+    
+    test_df = sentimentDataFrame("lab_test.txt")
+    X_test, y_test = vectorizer.transform(test_df.reviews), test_df.sentiments
+    
+    # train using naive bayes classifier
+    
+    clf.fit(X_train, y_train)
+    
+    # test models accuracy
+    print (roc_auc_score(y_test, clf.predict_proba(X_test)[:,1]))
     
     # import bookings.com comments
     comments_df = pd.read_excel("evaluation_dataset.xlsx", header=None, names=['reviews'])
